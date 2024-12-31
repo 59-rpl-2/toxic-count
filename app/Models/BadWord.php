@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class BadWord extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['word'];
 
-    public function badWords()
+    public function users()
     {
-        return $this->belongsToMany(BadWord::class, 'user_bad_words')
+        return $this->belongsToMany(User::class, 'user_bad_words')
                     ->withPivot('count')
                     ->withTimestamps();
     }
